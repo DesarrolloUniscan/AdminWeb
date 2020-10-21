@@ -1,0 +1,16 @@
+extends layout
+
+block content  
+  div(style="background-color: url('img_girl.jpg');")
+    form.form-3
+      p.clearfix
+        label(for='login') Username
+        input#login(type='text' name='login' placeholder='Username')
+      p.clearfix
+        label(for='password') Password
+        input#password(type='password' name='password' placeholder='Password')
+      p.clearfix
+        input#remember(type='checkbox' name='remember')
+        label(for='remember') Remember me
+      p.clearfix
+        input(type='submit' name='submit' value='Sign in')
