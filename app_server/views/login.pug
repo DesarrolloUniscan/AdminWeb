@@ -1,16 +1,17 @@
 extends layout
 
 block content  
-  div(style="background-color: url('img_girl.jpg');")
+  h1.h1Login Iniciar Sesión
+  .container-fluid
     form.form-3
       p.clearfix
-        label(for='login') Username
-        input#login(type='text' name='login' placeholder='Username')
+        label(for='login') Nombre de Usuario
+        input#login(type='text' name='login' placeholder='Nombre de Usuario')
       p.clearfix
-        label(for='password') Password
-        input#password(type='password' name='password' placeholder='Password')
+        label(for='password') Contraseña
+        input#password(type='password' name='password' placeholder='Contraseña')
       p.clearfix
         input#remember(type='checkbox' name='remember')
-        label(for='remember') Recuerdame
+        label(for='remember') Recuérdame
       p.clearfix
-        input(type='submit' name='submit' value='Sign in')
+        input(type='submit' name='submit' value='Iniciar Sesión')
