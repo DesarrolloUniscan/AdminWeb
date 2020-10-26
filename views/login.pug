@@ -1,0 +1,31 @@
+doctype html
+html
+  //Formulario para creación de usuarios
+  head
+    title Iniciar Sesi&oacute;n
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    // Versión mas reciente compilada y comprimida de CSS
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    // Libreria jQuery
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    // Popper JS
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+    // Versión mas reciente compilada de JavaScript
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+    // CSS
+    link(rel='stylesheet' href='style.css')
+  body.align-middle
+    div
+      form.form-3(action="", method="post", role="form")
+        p.clearfix
+          label(for='login') Username
+          input#login(type='text' name='login' placeholder='Username')
+        p.clearfix
+          label(for='password') Password
+          input#password(type='password' name='password' placeholder='Password')
+        p.clearfix
+          input#remember(type='checkbox' name='remember')
+          label(for='remember') Remember me
+        p.clearfix
+          input(type='submit' name='submit' value='Sign in')
