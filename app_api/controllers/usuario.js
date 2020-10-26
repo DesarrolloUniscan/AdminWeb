@@ -50,14 +50,17 @@ const userList = (req, res) =>{
 
 const userRead =(req, res)=> {
     sql.connect(config).then(()=>{
-        return sql.query(`SELECT AD_usuario FROM ADMIN WHERE AD_usuario= '${req.params.usuarioid}' AND AD_password= '${req.params.passwordid}'`);
+        console.log(req.params.usuarioid)
+        return sql.query(`SELECT AD_usuario, AD_password FROM ADMIN WHERE AD_usuario='${req.params.usuarioid}'`);
     }).then(result=>{
         res
-            .status(200).send(result.recordset);
+            .status(200)
+            .json(result.recordset);
             
     }).catch(err=>{
         res
-            .status(404).send(err)
+            .status(400)
+            .json(err)
     })
 }
 

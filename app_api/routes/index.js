@@ -7,7 +7,7 @@ router
     .get(usuarioController.userList)
     .post(usuarioController.userCreate)
 router
-    .route('usuario/:usuarioid/:passwordid')
+    .route('/usuario/:usuarioid')
     .get(usuarioController.userRead)
 
 module.exports = router;
