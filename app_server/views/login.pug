@@ -3,7 +3,7 @@ extends layout
 block content  
   h1.h1Login Iniciar Sesión
   .container-fluid
-    form.form-3
+    form.form-3(action="", method="post", role="form")
       p.clearfix
         label(for='login') Nombre de Usuario
         input#login(type='text' name='login' placeholder='Nombre de Usuario')

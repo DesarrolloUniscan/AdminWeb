@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const controllerLogin = require('../controllers/login')
+const controllerLogin = require('../controllers/login');
 /* GET home page. */
-router.get('/', controllerLogin.login);
+router
+    .route('/')
+    .get(controllerLogin.homePage)
+    .post(controllerLogin.homePage)
+
 
 module.exports = router;

@@ -6,6 +6,8 @@ router
     .route('/usuario')
     .get(usuarioController.userList)
     .post(usuarioController.userCreate)
-
+router
+    .route('usuario/:usuarioid/:passwordid')
+    .get(usuarioController.userRead)
 
 module.exports = router;
