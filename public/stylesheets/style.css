@@ -13,6 +13,7 @@
   margin: 60px auto 30px;
   padding: 50px;
   overflow: hidden;
+  /* margin-top: 50px; */
   margin-top: 50px;
   /* Styles */
   background: #111; 
@@ -195,4 +196,11 @@
   color: #fff;
 }
 
+/* -----------------NAVBAR------------------------- */
+.navbar{
+  background-color: #001a4d;
+}
+nav a {
+  color: #fff;
+}
 /* ------------------------------------------ */
