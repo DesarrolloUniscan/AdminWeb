@@ -219,10 +219,14 @@ body{
 /* ------------------------------------------ */
 
 td{
-  color: #fff;
+  color: #001a4d;
+  background-color: #fff;
+  font-weight: 600;
 }
 
 th{
   font-weight: 800;
   color: #fff;
 }
+
+.space {margin-right:15px}

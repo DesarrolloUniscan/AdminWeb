@@ -15,13 +15,13 @@ block content
                     tbody
                     - for(let i = 0; i<productos.length ; i++){
                         tr
-                            th(scope='row')=productos[i].PD_codigo
+                            td(scope='row')=productos[i].PD_codigo
                             td=productos[i].PD_nombre
                             td=productos[i].PD_precio
                             td(style="width: 30%")=productos[i].PD_descripcion
                             td=productos[i].PD_foto
                             td
-                                button.btn.btn-success.edit(type='button' href='#update' data-toggle='modal')
+                                button.btn.btn-success.edit.space(type='button' href='#update' data-toggle='modal')
                                     i.fas.fa-edit
                                 button.btn.btn-danger(type='button')
                                     i.far.fa-trash-alt
