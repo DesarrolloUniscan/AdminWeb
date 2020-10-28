@@ -1,16 +1,16 @@
  extends layout
+
  block content
-.container-fluid    
-    - for(let i = 0; i<usuarios.length ; i++){\        
+    .container-fluid       
         table.table
-        thead.thead-dark
-            tr
-            th(scope='col') Nombre de Usuario
-            th(scope='col') Contraseña
-        tbody
-            tr
-            th(scope='row') 1
-            td Mark
-            td Otto
-            td @mdo
-        - }
+            thead.thead-dark
+                tr
+                    th(scope='col') Nombre de Usuario
+                    th(scope='col') Contraseña
+            tbody
+                tr
+                    th(scope='row') 1
+                        td Mark
+                        td Otto
+                        td @mdo
+            

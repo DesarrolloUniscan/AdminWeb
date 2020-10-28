@@ -6,10 +6,14 @@ const apiOptions = {
 
 
 const homePage = (req, res) =>{
-    console.log(req.body.login)
-    renderLogin(req, res)
-    if(req.body.login!=undefined){
-       
+    renderLogin(req, res)   
+}
+
+const doLogin=(req, res) => {
+    console.log("Hace post")
+   
+    if(req.body.login!=""){
+        console.log("Entra validar");
         /*const getData ={
             AD_usuario: req.body.login,
             AD_password: req.body.password
@@ -28,10 +32,12 @@ const homePage = (req, res) =>{
                 if(response.statusCode === 200){
                     console.log(body)
                     console.log("entraMenu")
-                    res.setHeader("Content-Type", "text/html")
                     res.redirect('/menu')
                 }else if(response.statusCode === 400){
-                    console.log("Error")
+                    res.render('login', {
+                        mensaje:'Error del sistema',
+                        error: body
+                    })
                     
                 }else{
                     console.log(response.statusCode)
@@ -44,9 +50,12 @@ const homePage = (req, res) =>{
             }
         )
     
+    }else{
+        res.render('login',{    
+            mensaje: 'Todos los campos son requeridos'
+        })
     }
 
-   
 }
 
 const renderLogin = (req, res) =>{
@@ -58,6 +67,7 @@ const renderLogin = (req, res) =>{
 
 
 module.exports = {
-    homePage
+    homePage,
+    doLogin
     
 }
