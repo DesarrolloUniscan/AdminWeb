@@ -6,12 +6,12 @@ block content
                 table.table.table-bordered
                     thead
                     tr
-                        th(scope='col') Codigo
-                        th(scope='col') Nombre
-                        th(scope='col') Precio
-                        th(scope='col') Descripción
-                        th(scope='col') Foto
-                        th(scope='col') Acciones
+                        th(scope='col') CÓDIGO
+                        th(scope='col') NOMBRE
+                        th(scope='col') PRECIO
+                        th(scope='col') DESCRIPCIÓN
+                        th(scope='col') FOTO
+                        th(scope='col') ACCIONES
                     tbody
                     - for(let i = 0; i<productos.length ; i++){
                         tr
@@ -21,11 +21,36 @@ block content
                             td(style="width: 30%")=productos[i].PD_descripcion
                             td=productos[i].PD_foto
                             td
-                                button.btn.btn-primary(type='button' )
-                                    i.far.fa-eye
-                                button.btn.btn-success(type='submit')
+                                button.btn.btn-success.edit(type='button' href='#update' data-toggle='modal')
                                     i.fas.fa-edit
-                                button.btn.btn-danger(type='submit')
+                                button.btn.btn-danger(type='button')
                                     i.far.fa-trash-alt
                         -}
 
+    #update.container-fluid.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header 
+                    h4.modal-title Actualizar Producto
+                    button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
+                .modal-body
+                    form.form-horizontal(action='/')
+                        .form-group
+                            label.control-label.col-sm-2(for='codigo') Código:
+                            .col-sm-10
+                            input#email.form-control(type='text' placeholder='Ingrese código')
+                        .form-group
+                            label.control-label.col-sm-2(for='nombre') Nombre:
+                            .col-sm-10
+                            input#pwd.form-control(type='text' placeholder='Ingrese nombre')
+                        .form-group
+                            label.control-label.col-sm-2(for='precio') Precio:
+                            .col-sm-10
+                            input#pwd.form-control(type='number' placeholder='Ingrese precio')
+                        .form-group
+                            label.control-label.col-sm-2(for='descripcion') Descripción:
+                            .col-sm-10
+                            input#pwd.form-control(type='text' placeholder='Ingrese descripcion')
+                        .form-group
+                            .col-sm-offset-2.col-sm-10
+                            button.btn.btn-success(type='submit') Submit
