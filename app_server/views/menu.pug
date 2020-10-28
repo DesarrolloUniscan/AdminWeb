@@ -6,12 +6,12 @@ block content
                 table.table.table-bordered
                     thead
                     tr
-                        th(scope='col') CÓDIGO
-                        th(scope='col') NOMBRE
-                        th(scope='col') PRECIO
-                        th(scope='col') DESCRIPCIÓN
-                        th(scope='col') FOTO
-                        th(scope='col') ACCIONES
+                        th(scope='col') Codigo
+                        th(scope='col') Nombre
+                        th(scope='col') Precio
+                        th(scope='col') Descripción
+                        th(scope='col') Foto
+                        th(scope='col') Acciones
                     tbody
                     - for(let i = 0; i<productos.length ; i++){
                         tr
@@ -21,7 +21,9 @@ block content
                             td(style="width: 30%")=productos[i].PD_descripcion
                             td=productos[i].PD_foto
                             td
-                                button.btn.btn-success.edit(type='button' href='#update' data-toggle='modal')
+                                button.btn.btn-primary(type='button' href='/')
+                                    i.far.fa-eye
+                                button.btn.btn-success(type='button')
                                     i.fas.fa-edit
                                 button.btn.btn-danger(type='button')
                                     i.far.fa-trash-alt
