@@ -1,6 +1,6 @@
 extends layout
 block content 
-    .container-fluid
+    .container-fluid.pt-3
         .row
             .col-12
                 table.table.table-bordered
@@ -9,7 +9,7 @@ block content
                         th(scope='col') Codigo
                         th(scope='col') Nombre
                         th(scope='col') Precio
-                        th(scope='col') Descripcion
+                        th(scope='col') Descripción
                         th(scope='col') Foto
                         th(scope='col') Acciones
                     tbody
@@ -21,9 +21,9 @@ block content
                             td(style="width: 30%")=productos[i].PD_descripcion
                             td=productos[i].PD_foto
                             td
-                                button.btn.btn-primary(type='submit' )
+                                button.btn.btn-primary(type='button' )
                                     i.far.fa-eye
-                                button.btn.btn-success(type='submit' formmethod='post' formaction='')
+                                button.btn.btn-success(type='submit')
                                     i.fas.fa-edit
                                 button.btn.btn-danger(type='submit')
                                     i.far.fa-trash-alt

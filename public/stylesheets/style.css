@@ -206,10 +206,10 @@ my-auto{
 
 /* -----------------NAVBAR------------------------- */
 .navbar{
-  background-color: #001a4d;
+  background-color:#fff ;
 }
 nav a {
-  color: #fff;
+  color:#001a4d ;
 }
 /* ------------------------------------------ */
 
@@ -217,3 +217,7 @@ body{
   background-color: #001a4d;
 }
 /* ------------------------------------------ */
+
+th,td{
+  color: #fff;
+}

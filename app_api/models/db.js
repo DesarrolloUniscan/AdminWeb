@@ -4,16 +4,18 @@
 const config = {
     user: 'HR1011',
     password: 'Bmet$1011',
-    server: 'localhost',
+    server: '192.168.0.113',
+    port: 1433,
     database: 'VerificadorPrecios',
     pool: {
         max: 10,
         min: 0,
         idleTimeoutMillis: 30000
     },
-    parseJSON: true
+    parseJSON: true,
+    dialect: ",ssql",
+    dialectOptiond: "SQLEXPRESS"
 }
-
 module.exports = config;
 
 

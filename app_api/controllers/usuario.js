@@ -1,24 +1,6 @@
 
 let sql = require('mssql');
-//const config = require('../models/db')
-
-const config = {
-    user: 'HR1011',
-    password: 'Bmet$1011',
-    server: '192.168.0.113',
-    port: 1433,
-    database: 'VerificadorPrecios',
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-    },
-    parseJSON: true,
-    dialect: ",ssql",
-    dialectOptiond: "SQLEXPRESS"
-}
-
-
+const config = require('../models/db')
 
 const userCreate = (req, res) => {
     sql.connect(config).then(() => {
