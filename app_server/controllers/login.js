@@ -18,7 +18,7 @@ const doLogin=(req, res) => {
             AD_usuario: req.body.login,
             AD_password: req.body.password
         }*/
-        const path = `/api/usuario/${req.body.login}`;
+        const path = `/api/usuario/${req.body.login}/${req.body.password}`;
     
         const requestOptions = {
             url: `${apiOptions.server}${path}`,
@@ -39,11 +39,10 @@ const doLogin=(req, res) => {
                         error: body
                     })
                     
-                }else{
+                }else if(response.statusCode === 404){
                     console.log(response.statusCode)
-                    res.render('error', {
-                        error: 'Error',
-                        codigo:  'Codigo',
+                    res.render('login', {
+                        error: body,
                         mensaje: 'Ingreso no valido'
                     })
                 }
