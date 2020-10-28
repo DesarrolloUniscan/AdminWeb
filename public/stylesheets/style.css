@@ -2,6 +2,14 @@
   font-family: 'Raleway', sans-serif;
   position: relative;
 }
+body{
+  top:50%;
+  left:50%;
+}
+my-auto{
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
 .form-3 {
   font-family: 'Raleway', sans-serif;
@@ -193,6 +201,7 @@
   text-transform: uppercase;
   text-align: center;
   color: #fff;
+  padding-top: 10%;
 }
 
 /* -----------------NAVBAR------------------------- */
@@ -207,3 +216,4 @@ nav a {
 body{
   background-color: #001a4d;
 }
+/* ------------------------------------------ */

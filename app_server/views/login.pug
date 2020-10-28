@@ -15,21 +15,23 @@ html
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
     // CSS
     link(rel='stylesheet' href='../stylesheets/style.css')
-  body.align-middle
-    h1.h1Login Iniciar Sesión
-    p.text-white.text-center #{mensaje}
-    p.text-white.text-center #{error}
-    div
-      form.form-3(action="", method="post", role="form")
-        p.clearfix
-          label(for='login') Username
-          input#login(type='text' name='login' placeholder='Username')
-        p.clearfix
-          label(for='password') Password
-          input#password(type='password' name='password' placeholder='Password')
-        p.clearfix
-          input#remember(type='checkbox' name='remember')
-          label(for='remember') Remember me
-        p.clearfix
-          input(type='submit' name='submit' value='Sign in')
-  
+  body
+    .container-fluid.center
+      h1.h1Login Iniciar Sesión
+      p.text-white.text-center #{mensaje}
+      p.text-white.text-center #{error}
+      div
+        form.form-3(action="", method="post", role="form")
+          p.clearfix
+            label(for='login') Username
+            input#login(type='text' name='login' placeholder='Username')
+          p.clearfix
+            label(for='password') Password
+            input#password(type='password' name='password' placeholder='Password')
+          p.clearfix
+            input#remember(type='checkbox' name='remember')
+            label(for='remember') Remember me
+          p.clearfix
+            input(type='submit' name='submit' value='Sign in')
+
+    
