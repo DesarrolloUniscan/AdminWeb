@@ -1,3 +1,31 @@
 extends layout
 block content 
+    .container-fluid
+        .row
+            .col-12
+                table.table.table-bordered
+                    thead
+                    tr
+                        th(scope='col') Codigo
+                        th(scope='col') Nombre
+                        th(scope='col') Precio
+                        th(scope='col') Descripcion
+                        th(scope='col') Foto
+                        th(scope='col') Acciones
+                    tbody
+                    - for(let i = 0; i<productos.length ; i++){
+                        tr
+                            th(scope='row')=productos[i].PD_codigo
+                            td=productos[i].PD_nombre
+                            td=productos[i].PD_precio
+                            td(style="width: 30%")=productos[i].PD_descripcion
+                            td=productos[i].PD_foto
+                            td
+                                button.btn.btn-primary(type='submit' )
+                                    i.far.fa-eye
+                                button.btn.btn-success(type='submit' formmethod='post' formaction='')
+                                    i.fas.fa-edit
+                                button.btn.btn-danger(type='submit')
+                                    i.far.fa-trash-alt
+                        -}
 
