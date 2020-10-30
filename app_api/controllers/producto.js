@@ -2,13 +2,16 @@ let sql = require('mssql');
 const config = require('../models/db')
 
 const productCreate = (req, res) => {
+    console.log(req.body)
     sql.connect(config).then(() => {
-        return sql.query(`INSERT INTO ADMIN VALUES('${req.body.AD_usuario}', '${req.body.AD_password}')`);
+        return sql.query(`INSERT INTO Producto (PD_codigo, PD_nombre, PD_precio, PD_descripcion) VALUES('${req.body.codigo}', '${req.body.nombre}', '${req.body.precio}', '${req.body.descripcion}')`);
     }).then(result => {
+        console.log(result);
         res
             .status(200)
             .json(result)
     }).catch(err => {
+        console.log(err);
         res
             .status(400)
             .json(err)

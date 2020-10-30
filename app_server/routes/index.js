@@ -22,6 +22,9 @@ router.get('/usuarios', usersController.home);
 router.get('/updateProduct', productController.updateProduct);
 router.get('/deleteProduct', productController.deleteProduct);
 
-router.get('/nuevoProducto', productController.nuevoProducto);
+router
+    .route('/nuevoProducto')
+    .get(productController.nuevoProducto)
+    .post(productController.agregarProducto)
 
 module.exports = router;

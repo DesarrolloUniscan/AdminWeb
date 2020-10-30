@@ -1,8 +1,14 @@
 extends layout
 block content
+    -if (flag)
+        .alert.alert-success(role="alert") #{mensaje}
+        p.text-black.text-center #{error}
+    -if (mensaje != undefined && !flag)
+        .alert.alert-danger(role="alert") #{mensaje}
+        p.text-black.text-center #{error}
     .container.col-sm-5.form-group-lg
-        form.text-center.p-5.text-light.justify-content-center(action='#!' )
-            p.h2.mb-5 NUEVO PRODUCTO
+        form.text-center.p-4.text-light.justify-content-center(action='/nuevoProducto' method='post' role='form' )
+            p.h2.mb-3 NUEVO PRODUCTO
             .form-group
                 label.control-label.col-sm-3(for="codigo") Código:
                 input#codigo.form-control.mb-3(type='text' placeholder='Codigo' name='codigo')
@@ -14,7 +20,7 @@ block content
                 textarea#descripcion.form-control.mb-3(type='text' placeholder='Descripcion' name='descripcion' cols="30", rows="5")
             .form-group
                 label.control-label.col-sm-3(for="precio") Precio:
-                input#precio.form-control.mb-5(type='text' placeholder='Precio' name='precio')
+                input#precio.form-control.mb-5(type='number' placeholder='Precio' name='precio')
 
-            button.btn.btn-primary.btn-block(type='submit') Send
+            button.btn.btn-primary.btn-block(type='submit') Enviar
 

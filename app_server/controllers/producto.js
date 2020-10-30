@@ -67,12 +67,73 @@ const deleteProduct = (req, res) => {
     );
 }
 
-const nuevoProducto=(req,res)=>{
-    res.render('nuevoProducto');
+const nuevoProducto = (req, res) =>{
+    res.render('nuevoProducto',{
+        
+    })
 }
+
+const agregarProducto = (req, res) => {
+    const path = `/api/producto`;
+    const postData = {
+        codigo: req.body.codigo,
+        nombre: req.body.nombre,
+        descripcion: req.body.descripcion,
+        precio: req.body.precio,
+    };
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'POST',
+        json: postData
+    };
+    if (!postData.nombre || !postData.descripcion || !postData.precio || !postData.codigo) {
+        res.render('nuevoProducto', {
+            mensaje: 'Todos los campos son requeridos'
+        })
+    } else {
+        request(
+            requestOptions,
+            (err, response, body) => {
+                if (response.statusCode === 200) {
+                    res.render('nuevoProducto', {
+                        mensaje: 'Producto ingresado exitosamente',
+                        flag: true
+                    })
+                } else if (response.statusCode === 400 && body.number != 2627) {
+                    //Validar Vacios
+                    console.log(body.number)
+                    console.log(response.statusCode);
+                    res.render('nuevoProducto', {
+                        error: body.name,
+                        mensaje: 'Todos los campos son requeridos!',
+                        flag: false
+                    })
+                }else if (response.statusCode === 400 && body.number == 2627) {
+                    //Validar Vacios
+                    console.log(response.statusCode);
+                    res.render('nuevoProducto', {
+                        
+                        mensaje: 'El producto con codigo especificado ya existe',
+                        flag: false
+                    })
+                }
+                else {
+                    console.log(response.statusCode);
+                    res.render('error', {
+                        error: 'Error',
+                        codigo: err,
+                        mensaje: 'Ups! Hubo un error :c'
+                    });
+                }
+
+            }
+        )
+    }
+};
 
 module.exports = {
     updateProduct,
     deleteProduct,
+    agregarProducto,
     nuevoProducto
 }
