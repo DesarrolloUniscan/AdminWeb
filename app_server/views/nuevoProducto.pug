@@ -1,0 +1,15 @@
+extends layout
+block content
+    .container-fluid
+        form.text-center.p-5.text-light.justify-content-center(action='#!' )
+            p.h4.mb-4 Contact us
+
+            input#defaultContactFormName.form-control.mb-4.col-sm-4(type='text' placeholder='Name')
+
+            input#defaultContactFormEmail.form-control.mb-4.col-sm-4(type='email' placeholder='E-mail')
+
+            .form-group
+                textarea#exampleFormControlTextarea2.form-control.rounded-0.col-sm-4(rows='3' placeholder='Message')
+
+            button.btn.btn-info.btn-block.col-sm-4(type='submit') Send
+

@@ -1,6 +1,3 @@
-
-
-
 const config = {
     user: 'HR1011',
     password: 'Bmet$1011',

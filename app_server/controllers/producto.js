@@ -67,7 +67,12 @@ const deleteProduct = (req, res) => {
     );
 }
 
+const nuevoProducto=(req,res)=>{
+    res.render('nuevoProducto');
+}
+
 module.exports = {
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    nuevoProducto
 }
