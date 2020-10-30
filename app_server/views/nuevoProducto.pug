@@ -1,15 +1,20 @@
 extends layout
 block content
-    .container-fluid
+    .container.col-sm-5.form-group-lg
         form.text-center.p-5.text-light.justify-content-center(action='#!' )
-            p.h4.mb-4 Contact us
-
-            input#defaultContactFormName.form-control.mb-4.col-sm-4(type='text' placeholder='Name')
-
-            input#defaultContactFormEmail.form-control.mb-4.col-sm-4(type='email' placeholder='E-mail')
-
+            p.h2.mb-5 NUEVO PRODUCTO
             .form-group
-                textarea#exampleFormControlTextarea2.form-control.rounded-0.col-sm-4(rows='3' placeholder='Message')
+                label.control-label.col-sm-3(for="codigo") Código:
+                input#codigo.form-control.mb-3(type='text' placeholder='Codigo' name='codigo')
+            .form-group
+                label.control-label.col-sm-3(for="nombre") Nombre:
+                input#nombre.form-control.mb-3(type='text' placeholder='Nombre' name='nombre')
+            .form-group  
+                label.control-label.col-sm-3(for="descripcion") Descripción:
+                textarea#descripcion.form-control.mb-3(type='text' placeholder='Descripcion' name='descripcion' cols="30", rows="5")
+            .form-group
+                label.control-label.col-sm-3(for="precio") Precio:
+                input#precio.form-control.mb-5(type='text' placeholder='Precio' name='precio')
 
-            button.btn.btn-info.btn-block.col-sm-4(type='submit') Send
+            button.btn.btn-primary.btn-block(type='submit') Send
 
