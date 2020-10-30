@@ -16,8 +16,12 @@ router
     .get(productosController.productList)
     .post(productosController.productCreate)
 router
-    .route('/producto/:productoid')
+    .route('/producto/:codigo')
     .get(productosController.productRead)
+    .delete(productosController.productDelete)
+router
+    .route('/producto/:codigo/:nombre/:precio/:descripcion')
+    .put(productosController.productUpdate)
 
 
 module.exports = router;

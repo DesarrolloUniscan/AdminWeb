@@ -16,8 +16,10 @@ html
     // CSS
     link(rel='stylesheet' href='../stylesheets/style.css')
     script(src="https://kit.fontawesome.com/f3aa300ae3.js" crossorigin="anonymous")
+    script
+      include ../../public/javascripts/jquery.js
   body
-    nav.navbar.navbar-expand-lg
+    nav.navbar.navbar-expand-lg.navbar-light
       a.navbar-brand(href='#') Uniscan
       button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon

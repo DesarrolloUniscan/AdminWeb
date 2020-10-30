@@ -21,9 +21,9 @@ block content
                             td(style="width: 30%")=productos[i].PD_descripcion
                             td=productos[i].PD_foto
                             td
-                                button.btn.btn-success.edit.space(type='button' href='#update' data-toggle='modal')
+                                button.btn.btn-success.openUpdate.space(type='button' href='#update' data-id={'producto': productos[i]} data-toggle='modal')
                                     i.fas.fa-edit
-                                button.btn.btn-danger(type='button')
+                                button.btn.btn-danger.openDelete(type='button' href='#delete' data-id={'producto': productos[i]} data-toggle='modal')
                                     i.far.fa-trash-alt
                         -}
 
@@ -34,23 +34,39 @@ block content
                     h4.modal-title Actualizar Producto
                     button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
                 .modal-body
-                    form.form-horizontal(action='/')
+                    form.form-horizontal(action='/updateProduct' method='get' role='form')
                         .form-group
                             label.control-label.col-sm-2(for='codigo') Código:
                             .col-sm-10
-                            input#email.form-control(type='text' placeholder='Ingrese código')
+                            input#codigo.form-control(type='text' name='codigo' placeholder='Ingrese código' value="" readOnly="true")
                         .form-group
                             label.control-label.col-sm-2(for='nombre') Nombre:
                             .col-sm-10
-                            input#pwd.form-control(type='text' placeholder='Ingrese nombre')
+                            input#nombre.form-control(type='text' name='nombre' placeholder='Ingrese nombre' value="")
                         .form-group
                             label.control-label.col-sm-2(for='precio') Precio:
                             .col-sm-10
-                            input#pwd.form-control(type='number' placeholder='Ingrese precio')
+                            input#precio.form-control(type='number' name='precio' placeholder='Ingrese precio' value="")
                         .form-group
                             label.control-label.col-sm-2(for='descripcion') Descripción:
                             .col-sm-10
-                            input#pwd.form-control(type='text' placeholder='Ingrese descripcion')
+                            textarea#descripcion.form-control(type='text' name='descripcion' placeholder='Ingrese descripcion' value="" cols="30", rows="7") 
                         .form-group
                             .col-sm-offset-2.col-sm-10
                             button.btn.btn-success(type='submit') Enviar
+
+    #delete.container-fluid.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header 
+                    h4.modal-title Eliminar Producto
+                    button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
+                .modal-body
+                    form.form-horizontal(action='/deleteProduct' method='get' role='form')
+                        .form-group
+                            input#codigo(type="hidden" value="" name="codigo")
+                            label.control-label(for='name') Desea eliminar este Producto?
+                        .form-group
+                            label#codigoIn.control-label(for='name') 
+                        .form-group
+                            button.btn.btn-danger(type='submit') Eliminar

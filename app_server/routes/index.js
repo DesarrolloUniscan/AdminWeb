@@ -3,6 +3,7 @@ const router = express.Router();
 const controllerLogin = require('../controllers/login');
 const controllerMenu = require('../controllers/menu');
 const usersController= require('../controllers/users')
+const productController = require('../controllers/producto')
 
 /* GET home page. */
 router
@@ -12,10 +13,13 @@ router
 
 router
     .route('/menu')
-    .get(controllerMenu.menu)
+    .get(controllerMenu.menu)   
 
 
 /* GET users listing. */
 router.get('/usuarios', usersController.home);
+
+router.get('/updateProduct', productController.updateProduct);
+router.get('/deleteProduct', productController.deleteProduct);
 
 module.exports = router;
