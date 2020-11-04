@@ -1,5 +1,9 @@
 extends layout
-block content 
+block content
+    -if (error)
+        .alert.alert-danger(role="alert") #{mensaje}
+        p.text-black.text-center #{error}
+   
     a(href="/nuevoProducto")
         button.btn.btn-primary.mt-3.ml-3(type='button') Añadir Nuevo Producto 
     .container-fluid.pt-3
