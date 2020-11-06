@@ -1,10 +1,22 @@
 const express = require('express');
+const multer = require("multer");
 const router = express.Router();
 const controllerLogin = require('../controllers/login');
 const controllerMenu = require('../controllers/menu');
 const usersController= require('../controllers/users')
 const productController = require('../controllers/producto')
 const controllerSession = require('../controllers/session')
+
+const storage = multer.diskStorage({
+    destination:(req, file, cb)=>{
+        cb(null, 'D:/ProyectosUniscan/AdminWeb/public/images')
+    },
+    filename:(req, file, cb)=>{
+        cb(null, file.fieldname + '-' + Date.now() + '.jpg')
+    }
+})
+
+const upload = multer({storage: storage}).single('file')
 
 /* GET home page. */
 router
@@ -26,7 +38,19 @@ router.get('/deleteProduct', controllerSession.redirectLogin, productController.
 router
     .route('/nuevoProducto')
     .get(productController.nuevoProducto)
-    .post(productController.agregarProducto)
+    .post(productController.agregarProducto);
+
+
+
+router.post('/uploadImage', (req, res) =>{
+    upload(req, res, (err)=>{
+        if(err){
+            console.log(err)
+        }
+        console.log("entro")
+        res.redirect('/menu')
+    })
+})
 
 router.get('/logout', controllerSession.redirectLogin, controllerSession.logout);
 

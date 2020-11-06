@@ -13,5 +13,11 @@ $(document).on("click", ".openDelete", function () {
     
     $(".modal-body #codigoIn").html(x.PD_nombre);
     $(".modal-body #codigo").val(x.PD_codigo);
+
+    
     
 });
+
+$('#uploadForm').on('submit', function(e){
+    $('#uploadImage').modal('show');
+})

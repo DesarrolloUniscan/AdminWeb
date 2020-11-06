@@ -1,4 +1,7 @@
 const request = require('request');
+const fs = require("fs");
+const path = require('path');
+
 
 const apiOptions = {
     server: 'http://localhost:3000'
@@ -7,7 +10,6 @@ const apiOptions = {
 
 const updateProduct = (req, res) => {
 
-    console.log(req.query.nombre)
     const path = `/api/producto/${req.query.codigo}/${req.query.nombre}/${req.query.precio}/${req.query.descripcion}`;
 
     const requestOptions = { //Objeto cargado con las opciones
@@ -82,7 +84,9 @@ const nuevoProducto = (req, res) => {
     })
 }
 
-const agregarProducto = (req, res) => {
+const agregarProducto = (req, res, next) => {
+    console.log(req.body.nombre)
+
     const path = `/api/producto`;
     const postData = {
         codigo: req.body.codigo,
@@ -104,10 +108,12 @@ const agregarProducto = (req, res) => {
             requestOptions,
             (err, response, body) => {
                 if (response.statusCode === 200) {
+
                     res.render('nuevoProducto', {
                         mensaje: 'Producto ingresado exitosamente',
                         flag: true
                     })
+                    
                 } else if (body.number != 2627) {
                     console.log(body.number)
                     console.log(response.statusCode);
@@ -149,9 +155,39 @@ const agregarProducto = (req, res) => {
     }
 };
 
+const agregarImagen = (req, res)=>{
+    console.log(req.body.file)
+
+    const tempPath = req.file.path;
+    const targetPath = ("../../public/images/img.png");
+
+    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
+      fs.rename(tempPath, targetPath, err => {
+        if (err) return handleError(err, res);
+
+        res.render('nuevoProducto', {
+            mensaje: 'Producto ingresado exitosamente',
+            flag: true
+        })
+      });
+    } else {
+      fs.unlink(tempPath, err => {
+        if (err) return handleError(err, res);
+
+        res
+          .status(403)
+          .contentType("text/plain")
+          .end("Only .png files are allowed!");
+      });
+    }
+}
+
+
+
 module.exports = {
     updateProduct,
     deleteProduct,
     agregarProducto,
-    nuevoProducto
+    nuevoProducto,
+    agregarImagen
 }

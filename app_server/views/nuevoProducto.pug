@@ -7,7 +7,7 @@ block content
         .alert.alert-danger(role="alert") #{mensaje}
         p.text-black.text-center #{error}
     .container.col-sm-5.form-group-lg
-        form.text-center.p-4.text-light.justify-content-center(action='/nuevoProducto' method='post' role='form' )
+        form.text-center.p-4.text-light.justify-content-center(action='/nuevoProducto' method='post' role='form' id="uploadForm")
             p.h2.mb-3 NUEVO PRODUCTO
             .form-group
                 label.control-label.col-sm-3(for="codigo") Código:
@@ -22,8 +22,18 @@ block content
                 label.control-label.col-sm-3(for="precio") Precio:
                 input#precio.form-control.mb-5(type='number' placeholder='Precio' name='precio' min='0' max='50000'  step='0.01' required)
             .form-group
-                label.control-label.col-sm-3(for="imagen") Imagen: 
-                input#imagen.form-control.mb-5(type='text' placeholder='Ingrese el nombre de la imagen' name='imagen' required)
+                button.btn.btn-success.openUpdate.space(type='button' href='#updateImage' data-toggle='modal') Agregar Imagen
+            button.btn.btn-primary.btn-block(type='submit' ) Enviar
 
-            button.btn.btn-primary.btn-block(type='submit') Enviar
-
+    #updateImage.container-fluid.modal.fade
+            .modal-dialog
+                .modal-content
+                    .modal-header 
+                        h4.modal-title Ingresar Imagen
+                        button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
+                    .modal-body
+                        form.form-horizontal(action='/uploadImage' method='post' role='form')
+                            .form-group
+                                input#codigo(type="file" value="" name="file")
+                            .form-group
+                                button.btn.btn-danger(type='submit') Subir
