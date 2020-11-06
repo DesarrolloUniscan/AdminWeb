@@ -39,7 +39,7 @@ const userRead = (req, res) => {
             if (result.recordset[0].AD_password == req.params.password) {
                 res
                     .status(200)
-                    .json(result.recordset);
+                    .json(result.recordset[0]);
             }else{
                 res
                     .status(400)

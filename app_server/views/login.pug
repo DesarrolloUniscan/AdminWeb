@@ -16,10 +16,12 @@ html
     // CSS
     link(rel='stylesheet' href='../stylesheets/style.css')
   body
+    
     .container-fluid.center
       h1.h1Login Iniciar Sesión
-      p.text-white.text-center #{mensaje}
-      p.text-white.text-center #{error}
+      -if(mensaje){
+        .container-fluid.alert.alert-danger.col-sm-5.center(role="alert") #{mensaje}
+      -}
       div
         form.form-3(action="", method="post", role="form")
           p.clearfix

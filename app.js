@@ -9,14 +9,15 @@ const indexRouter = require('./app_server/routes/index');
 const usersRouter = require('./app_server/routes/users');
 const apiRouter = require('./app_api/routes/index');
 
+
 const TWO_HOURS= 1000 * 60 * 60 * 2
 
-const{
-  NODE_ENV= 'development',
-  SESS_NAME= 'sid',
-  SESS_SECRET= 'shh!quiet,it\'asecret!',
-  SESS_LIFETIME= TWO_HOURS
-} = process.env
+
+const NODE_ENV= 'development';
+const SESS_NAME= 'sid';
+const SESS_SECRET= 'shh!quiet,it\'asecret!';
+const SESS_LIFETIME= TWO_HOURS;
+
 
 const IN_PROD = NODE_ENV === 'production'
 
