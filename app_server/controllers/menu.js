@@ -38,6 +38,7 @@ const menu = (req, res) =>{
 }
 
 const menuRender = (req, res, objetoResultante) =>{
+    console.log(objetoResultante[0].PD_foto);
     if(req.query.err){
         res.render('menu',{
             productos:objetoResultante,
