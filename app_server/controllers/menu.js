@@ -18,7 +18,7 @@ const menu = (req, res) =>{
             requestOptions,
             (err, response, body) =>{
                 if(response.statusCode === 200){
-                    console.log(body)
+                    //console.log(body)
                     menuRender(req, res, body)
                 }else if(response.statusCode === 400){
                     res.render('error', {
@@ -38,9 +38,26 @@ const menu = (req, res) =>{
 }
 
 const menuRender = (req, res, objetoResultante) =>{
-    res.render('menu',{
-        productos:objetoResultante
-    })
+    if(req.query.err){
+        res.render('menu',{
+            productos:objetoResultante,
+            error:req.query.err,
+            mensaje: 'Todos los campos son requeridos para actualizacion'
+        })
+    }/*else if(req.query.upd){
+        res.render('menu',{
+            productos:objetoResultante,
+            upd:req.query.upd,
+            mensaje: 'Actualizacion Exitosa'
+        })
+    }*/else{
+        res.render('menu',{
+            productos:objetoResultante,
+            error: '',
+            mensaje: ''
+        })
+    }
+    
 }
 
 module.exports = {

@@ -12,7 +12,7 @@ const homePage = (req, res) =>{
 const doLogin=(req, res) => {
     console.log("Hace post")
    
-    if(req.body.login!=""){
+    if(req.body.login!="" && req.body.password!=""){
         console.log("Entra validar");
         /*const getData ={
             AD_usuario: req.body.login,
@@ -26,6 +26,7 @@ const doLogin=(req, res) => {
             json:{},
             qs:{}
         }
+        
         request(
             requestOptions,
             (err, response, body) =>{

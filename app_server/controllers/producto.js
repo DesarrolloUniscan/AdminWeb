@@ -7,7 +7,7 @@ const apiOptions = {
 
 const updateProduct = (req, res) => {
 
-
+    console.log(req.query.nombre)
     const path = `/api/producto/${req.query.codigo}/${req.query.nombre}/${req.query.precio}/${req.query.descripcion}`;
 
     const requestOptions = { //Objeto cargado con las opciones
@@ -17,28 +17,35 @@ const updateProduct = (req, res) => {
         qs: {}
 
     };
-    request(//modulo request que usa la API REST
-        requestOptions, //Opciones
-        (err, response, body) => { //Callback con sus 3 partes
+    if (req.query.codigo == "" || req.query.nombre == "" || req.query.precio=="" || req.query.descripcion == "") {
+        let val=true
+        res.redirect(`/menu?err=${val}`)
+    } else {
+        request(//modulo request que usa la API REST
+            requestOptions, //Opciones
+            (err, response, body) => { //Callback con sus 3 partes
 
-            if (err) {//error - objeto con el error
-                console.log(err + 'error');
-            } else if (response.statusCode === 200) {
-                //console.log(body);
-                res.redirect('/menu');
+                if (err) {//error - objeto con el error
+                    console.log(err + 'error');
+                } else if (response.statusCode === 200) {
+                    //console.log(body);
+                    /* let val=true */
+                    res.redirect(`/menu`);
 
-            } else if(response.statusCode === 400){
-                console.log(response.statusCode);
-                
+                } else if (response.statusCode === 400) {
+                    console.log(response.statusCode);
+
+                }
+                //response - respuesta completa (incluye el status)
+                //body - cuerpo de la respuesta objeto(Product, Usuario, Marca)
             }
-            //response - respuesta completa (incluye el status)
-            //body - cuerpo de la respuesta objeto(Product, Usuario, Marca)
-        }
 
-    );
+        );
+    }
 }
 
 const deleteProduct = (req, res) => {
+
     const path = `/api/producto/${req.query.codigo}`;
 
     const requestOptions = { //Objeto cargado con las opciones
@@ -48,6 +55,7 @@ const deleteProduct = (req, res) => {
         qs: {}
 
     };
+
     request(//modulo request que usa la API REST
         requestOptions, //Opciones
         (err, response, body) => { //Callback con sus 3 partes
@@ -56,20 +64,21 @@ const deleteProduct = (req, res) => {
             } else if (response.statusCode === 204) {
                 res.redirect('/menu');
 
-            } else if(response.statusCode === 400){
+            } else if (response.statusCode === 400) {
                 console.log(response.statusCode);
-                
+
             }
             //response - respuesta completa (incluye el status)
             //body - cuerpo de la respuesta objeto(Product, Usuario, Marca)
         }
 
     );
+
 }
 
-const nuevoProducto = (req, res) =>{
-    res.render('nuevoProducto',{
-        
+const nuevoProducto = (req, res) => {
+    res.render('nuevoProducto', {
+
     })
 }
 
@@ -99,7 +108,16 @@ const agregarProducto = (req, res) => {
                         mensaje: 'Producto ingresado exitosamente',
                         flag: true
                     })
-                } else if (response.statusCode === 400 && body.number != 2627) {
+                } else if (body.number != 2627) {
+                    console.log(body.number)
+                    console.log(response.statusCode);
+                    res.render('nuevoProducto', {
+                        error: "Codigo: " + body.number,
+                        mensaje: 'Datos en cadena o binarios encontrados, no se permiten',
+                        flag: false
+                    })
+                }
+                else if (response.statusCode === 400 && body.number != 2627) {
                     //Validar Vacios
                     console.log(body.number)
                     console.log(response.statusCode);
@@ -108,11 +126,11 @@ const agregarProducto = (req, res) => {
                         mensaje: 'Todos los campos son requeridos!',
                         flag: false
                     })
-                }else if (response.statusCode === 400 && body.number == 2627) {
+                } else if (response.statusCode === 400 && body.number == 2627) {
                     //Validar Vacios
                     console.log(response.statusCode);
                     res.render('nuevoProducto', {
-                        
+
                         mensaje: 'El producto con codigo especificado ya existe',
                         flag: false
                     })
