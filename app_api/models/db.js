@@ -1,7 +1,7 @@
 const config = {
     user: 'HR1011',
     password: 'Bmet$1011',
-    server: '192.168.1.125',
+    server: '192.168.1.131',
     port: 1433,
     database: 'VerificadorPrecios',
     pool: {

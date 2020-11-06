@@ -33,10 +33,11 @@ const doLogin=(req, res) => {
                 if(response.statusCode === 200){
                     console.log(body)
                     console.log("entraMenu")
+                    req.session.userid = body.AD_usuario
                     res.redirect('/menu')
                 }else if(response.statusCode === 400){
                     res.render('login', {
-                        mensaje:'Error del sistema',
+                        mensaje: body,
                         error: body
                     })
                     
@@ -44,7 +45,7 @@ const doLogin=(req, res) => {
                     console.log(response.statusCode)
                     res.render('login', {
                         error: body,
-                        mensaje: 'Ingreso no valido'
+                        mensaje: body
                     })
                 }
             }
