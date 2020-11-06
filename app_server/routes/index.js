@@ -20,8 +20,8 @@ router
 /* GET users listing. */
 router.get('/usuarios', usersController.home);
 
-router.get('/updateProduct', controllerSession.redirectMenu, productController.updateProduct);
-router.get('/deleteProduct', controllerSession.redirectMenu, productController.deleteProduct);
+router.get('/updateProduct', controllerSession.redirectLogin, productController.updateProduct);
+router.get('/deleteProduct', controllerSession.redirectLogin, productController.deleteProduct);
 
 router
     .route('/nuevoProducto')
