@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const session= require('express-session');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -8,7 +9,31 @@ const indexRouter = require('./app_server/routes/index');
 const usersRouter = require('./app_server/routes/users');
 const apiRouter = require('./app_api/routes/index');
 
-let app = express();
+const TWO_HOURS= 1000 * 60 * 60 * 2
+
+const{
+  NODE_ENV= 'development',
+  SESS_NAME= 'sid',
+  SESS_SECRET= 'shh!quiet,it\'asecret!',
+  SESS_LIFETIME= TWO_HOURS
+} = process.env
+
+const IN_PROD = NODE_ENV === 'production'
+
+const app = express();
+
+app.use(session({
+  name: SESS_NAME,
+  resave: false,
+  saveUninitialized:false,
+  secret:SESS_SECRET,
+  cookie:{
+    maxAge: SESS_LIFETIME,
+    sameSite: true,
+    secure: IN_PROD
+  }
+}))
+
 
 // view engine setup
 app.set('views', path.join(__dirname,'app_server', 'views'));
