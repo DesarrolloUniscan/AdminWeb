@@ -44,22 +44,26 @@ block content
                         .form-group
                             label.control-label.col-sm-2(for='codigo') Código:
                             .col-sm-10
-                            input#codigo.form-control(type='text' name='codigo' placeholder='Ingrese código' value="" readOnly="true")
+                            input#codigo.form-control(type='text' name='codigo' placeholder='Ingrese código' value="" readOnly="true" required)
                         .form-group
                             label.control-label.col-sm-2(for='nombre') Nombre:
                             .col-sm-10
-                            input#nombre.form-control(type='text' name='nombre' placeholder='Ingrese nombre' value="")
+                            input#nombre.form-control(type='text' name='nombre' placeholder='Ingrese nombre' value="" required)
                         .form-group
                             label.control-label.col-sm-2(for='precio') Precio:
                             .col-sm-10
-                            input#precio.form-control(type='number' name='precio' placeholder='Ingrese precio' value="")
+                            input#precio.form-control(type='number' name='precio' placeholder='Ingrese precio' value="" min='0' max='50000'  step='0.01' required)
                         .form-group
                             label.control-label.col-sm-2(for='descripcion') Descripción:
                             .col-sm-10
-                            textarea#descripcion.form-control(type='text' name='descripcion' placeholder='Ingrese descripcion' value="" cols="30", rows="7") 
+                            textarea#descripcion.form-control(type='text' name='descripcion' placeholder='Ingrese descripcion' value="" cols="30", rows="7" required) 
+                        .form-group
+                            label.control-label.col-sm-3(for="imagen") Imagen: 
+                            input#imagen.form-control.mb-5(type='text' placeholder='Imagen' name='imagen' required)                   
                         .form-group
                             .col-sm-offset-2.col-sm-10
                             button.btn.btn-success(type='submit') Enviar
+
 
     #delete.container-fluid.modal.fade
         .modal-dialog

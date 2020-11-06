@@ -5,6 +5,7 @@ $(document).on("click", ".openUpdate", function () {
     $(".modal-body #nombre").val(x.PD_nombre);
     $(".modal-body #descripcion").val(x.PD_descripcion);
     $(".modal-body #precio").val(x.PD_precio);
+    $(".modal-body #imagen").val(x.PD_foto);
 });
 
 $(document).on("click", ".openDelete", function () {
